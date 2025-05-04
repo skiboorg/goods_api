@@ -4,12 +4,17 @@ class Category(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     image = models.FileField(upload_to='image/', blank=True, null=True)
 
+    def __str__(self):
+        return f'{self.name}'
+
 
 class Product(models.Model):
     name = models.CharField(max_length=255, blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
     description = models.TextField(blank=True, null=True, default=None)
 
+    def __str__(self):
+        return f'{self.name}'
 
 class Image(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='images')

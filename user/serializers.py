@@ -78,7 +78,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         with transaction.atomic():
             user = User.objects.create_user(**validated_data)
 
-            user.is_active = True
+            user.is_active = False
             user.own_ref_code = 'ET-' + create_random_string(False, 8)
             user.save(update_fields=["is_active"])
 

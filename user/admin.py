@@ -29,6 +29,7 @@ class UserAdmin(BaseUserAdmin):
         ('Personal info',
          {'fields': (
 
+         'is_active',
          'uuid',
          'photo_url',
          'firstname',
