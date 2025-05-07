@@ -17,7 +17,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
     )
     model = Category
-    inlines = [ProductInline]
+    #inlines = [ProductInline]
 
     readonly_fields = ['image_preview']
 
@@ -40,10 +40,11 @@ class ProductAdmin(admin.ModelAdmin):
     model = Product
     inlines = [ImageInline]
     readonly_fields = ['image_preview']
+    search_fields = ('name',)
 
     def image_preview(self, obj):
 
-        if obj.images:
+        if obj.images and obj.images.first():
             return mark_safe(
                 '<img src="{0}" width="150" height="150" style="object-fit:contain" />'.format(obj.images.first().file.url))
         else:

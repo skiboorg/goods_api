@@ -51,7 +51,7 @@ class CheckUser(APIView):
             user.lastname = data.get('last_name')
             user.username = data.get('username')
             user.photo_url = data.get('photo_url')
-            user.is_active = False
+            user.is_active = True
             user.save()
             return Response({"status": "created", "tg_id":user.tg_id}, status=200)
         else:
