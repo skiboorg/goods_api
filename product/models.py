@@ -33,6 +33,15 @@ class Image(models.Model):
         verbose_name = "Изображение"
         verbose_name_plural = "Изображения"
 
+class Button(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='buttons')
+    label =models.CharField('Название на кнопке', max_length=255, blank=False, null=True)
+    url =models.CharField('Ссылка', max_length=255, blank=False, null=True)
+
+    class Meta:
+        verbose_name = "Кнопка"
+        verbose_name_plural = "Кнопки"
+
 class ProductRate(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='rates')
     user = models.ForeignKey('user.User', on_delete=models.CASCADE, related_name='rates')

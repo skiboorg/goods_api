@@ -10,6 +10,10 @@ class ImageInline(admin.TabularInline):
     model = Image
     extra = 0
 
+class ButtonInline(admin.TabularInline):
+    model = Button
+    extra = 0
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
         'image_preview',
@@ -38,7 +42,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     )
     model = Product
-    inlines = [ImageInline]
+    inlines = [ImageInline, ButtonInline]
     readonly_fields = ['image_preview']
     search_fields = ('name',)
 
